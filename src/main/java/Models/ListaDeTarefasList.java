@@ -1,10 +1,11 @@
 package Models;
 
-import interfaces.ListaDeTarefasInterface;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import interfaces.TarefasInterface;
 
-public class ListaDeTarefasList implements ListaDeTarefasInterface{
+public class ListaDeTarefasList implements TarefasInterface{
 
     private List<Tarefa> tarefas;
 
@@ -23,7 +24,7 @@ public class ListaDeTarefasList implements ListaDeTarefasInterface{
     }
 
     @Override
-    public Tarefa buscarTarefaModelsData(int data) {
+    public Tarefa buscarTarefaModelsData(Date data) {
         for(Tarefa tarefa : this.tarefas){
             if(tarefa.getData() == data){
                 return tarefa;
@@ -40,6 +41,11 @@ public class ListaDeTarefasList implements ListaDeTarefasInterface{
     @Override
     public void removerTarefa(Tarefa tarefa) {
         this.tarefas.remove(tarefa);
+    }
+
+    @Override
+    public List<Tarefa> buscarTodasTarefas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

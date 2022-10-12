@@ -1,13 +1,14 @@
 package interfaces;
 
 import Models.Tarefa;
+import java.util.Date;
 import java.util.List;
 
-public interface ListaDeTarefasInterface {
+ public interface TarefasInterface {
     
     Tarefa buscarTarefaModelsTitulo(String titulo);
-    Tarefa buscarTarefaModelsData(int data);
-    //List<ModelsTarefa> getTodasTarefas(); //pra listar todas as tarefas
+    Tarefa buscarTarefaModelsData(Date data);
+    List<Tarefa> buscarTodasTarefas(); //pra listar todas as tarefas
     void addTarefa(Tarefa tarefa);
     void removerTarefa(Tarefa tarefa);
     

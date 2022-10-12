@@ -27,7 +27,6 @@ public class ViewInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         btn_iniciar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -39,10 +38,7 @@ public class ViewInicial extends javax.swing.JFrame {
                 btn_iniciarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 40));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vieww/img/Agenda.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(btn_iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 100, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -89,6 +85,5 @@ public class ViewInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_iniciar;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

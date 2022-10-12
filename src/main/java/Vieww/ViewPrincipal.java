@@ -4,6 +4,10 @@
  */
 package Vieww;
 
+import DAO.TarefaDAO;
+import Models.TarefaTableModel;
+import interfaces.TarefasInterface;
+
 /**
  *
  * @author 08599501909
@@ -15,6 +19,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
      */
     public ViewPrincipal() {
         initComponents();
+        
+        
     }
 
     /**
@@ -31,8 +37,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
         btnCriar = new javax.swing.JButton();
         btnAtualizar1 = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        campoGeral = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -53,13 +59,32 @@ public class ViewPrincipal extends javax.swing.JFrame {
         });
 
         btnAtualizar1.setText("Atualizar");
+        btnAtualizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizar1ActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar Tarefa");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setEnabled(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        campoGeral.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Cod", "Titulo", "Data", "Prioridade", "Descrição"
+            }
+        ));
+        campoGeral.setEnabled(false);
+        jScrollPane2.setViewportView(campoGeral);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,7 +93,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(61, 61, 61)
@@ -95,8 +120,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
                         .addComponent(btnEditar)
                         .addComponent(btnAtualizar1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -106,10 +131,21 @@ public class ViewPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    
+    
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
-       ViewTarefa viewTarefa = new ViewTarefa();
+       ViewCriarTarefa viewTarefa = new ViewCriarTarefa();
        viewTarefa.setVisible(true);
     }//GEN-LAST:event_btnCriarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnAtualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizar1ActionPerformed
+
+        
+    }//GEN-LAST:event_btnAtualizar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,9 +186,9 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAtualizar1;
     private javax.swing.JButton btnCriar;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JTable campoGeral;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
