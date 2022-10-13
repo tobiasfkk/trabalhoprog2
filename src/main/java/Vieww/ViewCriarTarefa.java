@@ -1,30 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vieww;
 
-import Models.ListaDeTarefasList;
+import DAO.TarefaDAO;
 import Models.Tarefa;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.SimpleFormatter;
 import javax.swing.JOptionPane;
-import javax.xml.crypto.Data;
-import interfaces.TarefasInterface;
+import interfaces.TarefaInterface;
 
-/**
- *
- * @author 08599501909
- */
 public class ViewCriarTarefa extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ViewTarefa
-     */
     public ViewCriarTarefa() {
         initComponents();
+        btnConfirmar.addActionListener((e) -> {
+            TarefaInterface repositorio = new TarefaDAO();
+//            String titulo = txtTitulo.getText();
+//            String prioridade = comboPrioridade.getSelectedItem()+"";             //comentei aqui, mas da pra add novamente no construtor(Tarefa)
+//            String descricao = txtDescricao.getText();  
+            Tarefa tarefa = new Tarefa(txtTitulo.getText());
+            repositorio.gravar(tarefa);
+            JOptionPane.showMessageDialog(null, tarefa.getTitulo() + " criada com Sucesso o toba é mt bom");
+//            txtTitulo.setText("");
+//            comboPrioridade.setSelectedItem("");
+//            txtDescricao.setText("");
+        });
+        
+        btnListarTarefa.addActionListener((e) ->{
+          new ViewPrincipal().setVisible(true);
+        });
     }
+      
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,6 +55,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtCodigoTarefa = new javax.swing.JTextField();
         campoData = new javax.swing.JLabel();
+        btnListarTarefa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -72,6 +78,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Data");
 
+        comboStatus.setEditable(true);
         comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Concluído", "Concluído" }));
         comboStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +138,8 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         campoData.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         campoData.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
+        btnListarTarefa.setText("Listar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,11 +175,14 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(btnConfirmar)
                             .addComponent(btnAnexo)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnConfirmar)
+                                .addGap(56, 56, 56)
+                                .addComponent(btnListarTarefa)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -206,7 +218,9 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAnexo)
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnListarTarefa))
                 .addContainerGap())
         );
 
@@ -216,18 +230,6 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
    
     
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-  
-        String titulo = txtTitulo.getText();
-        String prioridade = comboPrioridade.getSelectedItem()+"";
-        String descricao = txtDescricao.getText();  
-        Tarefa t1 = new Tarefa(titulo,prioridade,descricao);
-        System.out.println(t1.toString());
-        
-        JOptionPane.showMessageDialog(null, "Tarefa " + titulo + " criada com Sucesso");
-        
-        txtTitulo.setText("");
-        comboPrioridade.setSelectedItem("");
-        txtDescricao.setText("");
        
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
@@ -309,6 +311,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnexo;
     private javax.swing.JButton btnConfirmar;
+    private javax.swing.JButton btnListarTarefa;
     private javax.swing.JLabel campoData;
     private javax.swing.JComboBox<String> comboPrioridade;
     private javax.swing.JComboBox<String> comboStatus;

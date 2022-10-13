@@ -13,9 +13,11 @@ import javax.swing.table.AbstractTableModel;
  * @author João Pedro Parro
  */
 public class TarefaTableModel extends AbstractTableModel {
+    
     private List<Tarefa>tarefas;
     
-    private String[] nomeColunas = {"Tarefa"};
+    private String[] nomeColunas = {"ID","Título", "Data", "Prioridade", "Descricao"};
+    
     private final int COLUNA_COD = 0;
     private final int COLUNA_TITULO = 1;
     private final int COLUNA_DATA = 2;
@@ -35,6 +37,11 @@ public class TarefaTableModel extends AbstractTableModel {
     @Override
     public int getColumnCount() {
         return nomeColunas.length;
+    }
+    
+    @Override
+    public String getColumnName(int index) {
+        return nomeColunas[index];
     }
 
     @Override

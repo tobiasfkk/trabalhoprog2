@@ -1,11 +1,7 @@
 package Models;
 
 import Exception.CampoVazioException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import interfaces.TarefasInterface;
 
 public class Tarefa {
     
@@ -16,16 +12,16 @@ public class Tarefa {
     private String status;
     private String descricao;
    
-    private List<Tarefa>tarefas;
+
     
-    public Tarefa(String titulo, String prioridade, String descricao) {
-        this.numeroTarefa += 1;
+    public Tarefa(String titulo) {
+//        this.numeroTarefa += 1;
         this.titulo = titulo;
-        this.prioridade = prioridade;
-        this.status = "Nao Concluido";
-        this.descricao = descricao;
-        this.data = data;
-        tarefas = new ArrayList<>();
+//        this.prioridade = prioridade;
+//        this.status = "Nao Concluido";
+//        this.descricao = descricao;
+//        this.data = data;
+//        tarefas = new ArrayList<>();
         
     }
 

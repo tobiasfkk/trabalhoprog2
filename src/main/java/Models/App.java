@@ -1,6 +1,6 @@
 package Models;
 
-import interfaces.TarefasInterface;
+import interfaces.TarefaInterface;
 
 public class App {
     public static void main(String args[]){

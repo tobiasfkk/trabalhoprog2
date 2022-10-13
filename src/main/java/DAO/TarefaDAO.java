@@ -1,38 +1,36 @@
 package DAO;
 
 import Models.Tarefa;
+import interfaces.TarefaInterface;
+import java.util.ArrayList;
 import java.util.Date;
-import interfaces.TarefasInterface;
 import java.util.List;
 
-public class TarefaDAO implements TarefasInterface{
+public class TarefaDAO implements TarefaInterface{
+    
     private static List<Tarefa>tarefas;
+
+    public TarefaDAO(){
+        if(tarefas == null)
+           tarefas = new ArrayList<>();
+    }
     
     @Override
-    public Tarefa buscarTarefaModelsTitulo(String titulo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void gravar(Tarefa tarefa) {
+        tarefas.add(tarefa);
     }
 
     @Override
-    public Tarefa buscarTarefaModelsData(Date data) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Tarefa buscar(Date data) {
+        for(Tarefa tarefa : tarefas){
+            if (tarefa.getData().equals(data))
+                return tarefa;
+        }
+        return null;
     }
-
+    
     @Override
     public List<Tarefa> buscarTodasTarefas() {
         return tarefas;
     }
-
-    @Override
-    public void addTarefa(Tarefa tarefa) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void removerTarefa(Tarefa tarefa) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-   
-
 }
