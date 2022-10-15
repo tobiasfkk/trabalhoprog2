@@ -1,35 +1,40 @@
 package Models;
 
 import Exception.CampoVazioException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Tarefa {
     
-    private static int numeroTarefa = 0;
+    private int numeroTarefa;
     private String titulo; 
-    private Date data = new Date();
+    private String datahoracriacao;
     private String prioridade;
     private String status;
     private String descricao;
    
 
     
-    public Tarefa(String titulo) {
-//        this.numeroTarefa += 1;
+    public Tarefa(String titulo, String prioridade, String status, String descricao) {
+        
+        this.datahoracriacao = getDatahoracriacao();
         this.titulo = titulo;
-//        this.prioridade = prioridade;
-//        this.status = "Nao Concluido";
-//        this.descricao = descricao;
-//        this.data = data;
-//        tarefas = new ArrayList<>();
+        this.prioridade = prioridade;
+        this.status = status;
+        this.descricao = descricao;
         
     }
-
-    public static int getNumeroTarefa() {
-        return numeroTarefa;
+    
+    public String getDatahoracriacao() { 
+	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+	Date date = new Date(); 
+	return dateFormat.format(date); 
     }
     
-    
+    public int getNumeroTarefa() {
+        return numeroTarefa;
+    }
     
     public String getTitulo() {
         return titulo;
@@ -47,11 +52,11 @@ public class Tarefa {
         return descricao;
     }
     
-    public Date getData() {
-        return data;
+    public void setNumeroTarefa(int numeroTarefa){
+        this.numeroTarefa = numeroTarefa;
     }
     
-    /*metodo pra q retorna msg de erro caso usuario deixe o campo vazio*/
+    /*metodo pra q retorna msg de erro caso usuario deixe o campo vazio*/ //n ta funcionando
     public void setTitulo(String titulo) throws CampoVazioException {
         if(titulo.isBlank()) {
             throw new CampoVazioException();
@@ -69,7 +74,7 @@ public class Tarefa {
 
     @Override
     public String toString() {
-        return numeroTarefa + " - " + titulo + " - "+ data + " - " + prioridade + " - "  + status + " - " + descricao ;
+        return numeroTarefa + " - " + titulo + " - "+ datahoracriacao + " - " + prioridade + " - "  + status + " - " + descricao ;
     }
     
     

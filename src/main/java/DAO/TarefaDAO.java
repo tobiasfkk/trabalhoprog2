@@ -23,7 +23,7 @@ public class TarefaDAO implements TarefaInterface{
     @Override
     public Tarefa buscar(Date data) {
         for(Tarefa tarefa : tarefas){
-            if (tarefa.getData().equals(data))
+            if (tarefa.getDatahoracriacao().equals(data))
                 return tarefa;
         }
         return null;

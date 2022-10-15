@@ -16,11 +16,11 @@ public class TarefaTableModel extends AbstractTableModel {
     
     private List<Tarefa>tarefas;
     
-    private String[] nomeColunas = {"ID","Título", "Data", "Prioridade", "Descricao"};
+    private String[] nomeColunas = {"ID","Título", "Data Criação", "Prioridade", "Descricão"};
     
     private final int COLUNA_COD = 0;
     private final int COLUNA_TITULO = 1;
-    private final int COLUNA_DATA = 2;
+    private final int COLUNA_DATACRIACAO = 2;
     private final int COLUNA_PRIORIDADE = 3;
     private final int COLUNA_DESCRICAO = 4;
     
@@ -28,7 +28,6 @@ public class TarefaTableModel extends AbstractTableModel {
         this.tarefas = tarefas;
     }
     
-     
     @Override
     public int getRowCount() {
         return tarefas.size();
@@ -52,8 +51,8 @@ public class TarefaTableModel extends AbstractTableModel {
                     return tarefa.getNumeroTarefa();
                 case COLUNA_TITULO:
                     return tarefa.getTitulo();
-                case COLUNA_DATA:
-                    return tarefa.getData();
+                case COLUNA_DATACRIACAO:
+                    return tarefa.getDatahoracriacao();
                 case COLUNA_PRIORIDADE:
                     return tarefa.getPrioridade();
                 case COLUNA_DESCRICAO:
