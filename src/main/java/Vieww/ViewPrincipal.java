@@ -19,8 +19,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
      */
     public ViewPrincipal() {
         initComponents();
-        
-       
         TarefaInterface repositorio = new TarefaDAO();
         TarefaTableModel model = new TarefaTableModel(repositorio.buscarTodasTarefas());
         campoGeral.setModel(model);

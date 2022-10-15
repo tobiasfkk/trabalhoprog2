@@ -1,13 +1,11 @@
 package Models;
 
 import Exception.CampoVazioException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Tarefa {
     
-    private int numeroTarefa;
+    private int numerotarefa;
+    private String dataconclusao;
     private String titulo; 
     private String datahoracriacao;
     private String prioridade;
@@ -16,30 +14,34 @@ public class Tarefa {
    
 
     
-    public Tarefa(String titulo, String prioridade, String status, String descricao) {
+    public Tarefa(int numerotarefa, String datahoracriacao, String titulo, String dataconclusao, String prioridade, String status, String descricao) {
         
-        this.datahoracriacao = getDatahoracriacao();
+        this.numerotarefa = numerotarefa;
+        this.datahoracriacao = datahoracriacao;
         this.titulo = titulo;
+        this.dataconclusao = dataconclusao;
         this.prioridade = prioridade;
         this.status = status;
         this.descricao = descricao;
         
     }
     
-    public String getDatahoracriacao() { 
-	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
-	Date date = new Date(); 
-	return dateFormat.format(date); 
-    }
-    
     public int getNumeroTarefa() {
-        return numeroTarefa;
+        return numerotarefa;
+    }
+        
+    public String getDatahoracriacao() { 
+	return datahoracriacao;
     }
     
     public String getTitulo() {
         return titulo;
     }
 
+    public String getDataConclusao(){
+        return dataconclusao;
+    }
+    
     public String getPrioridade() {
         return prioridade;
     }
@@ -52,11 +54,11 @@ public class Tarefa {
         return descricao;
     }
     
-    public void setNumeroTarefa(int numeroTarefa){
-        this.numeroTarefa = numeroTarefa;
+    public void setNumeroTarefa(int numerotarefa){
+        this.numerotarefa = numerotarefa;
     }
     
-    /*metodo pra q retorna msg de erro caso usuario deixe o campo vazio*/ //n ta funcionando
+    /*metodo pra q retorna msg de erro caso usuario deixe o campo vazio*/ //n ta funcionando mas tobi vai arrumar
     public void setTitulo(String titulo) throws CampoVazioException {
         if(titulo.isBlank()) {
             throw new CampoVazioException();
@@ -74,7 +76,7 @@ public class Tarefa {
 
     @Override
     public String toString() {
-        return numeroTarefa + " - " + titulo + " - "+ datahoracriacao + " - " + prioridade + " - "  + status + " - " + descricao ;
+        return numerotarefa + " - " + titulo + " - "+ datahoracriacao + " - " + prioridade + " - "  + status + " - " + descricao ;
     }
     
     

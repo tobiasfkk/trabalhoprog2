@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import interfaces.TarefaInterface;
+import java.text.DateFormat;
 
 public class ViewCriarTarefa extends javax.swing.JFrame {
 
@@ -16,17 +17,27 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
             
             TarefaInterface repositorio = new TarefaDAO();
             
+            int numerotarefa = 0;
+            
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+            Date date = new Date(); 
+            String datahoracriacao = dateFormat.format(date); 
+            
             String titulo = txtTitulo.getText();
+            
+            String dataconclusao = txtDataConclusao.getText();
+            
             String prioridade = (String) comboPrioridade.getSelectedItem();
             String status = (String) comboStatus.getSelectedItem();
             String descricao = txtDescricao.getText();  
-            Tarefa tarefa = new Tarefa(titulo, prioridade, status, descricao);
-            
+            Tarefa tarefa = new Tarefa(numerotarefa, datahoracriacao, titulo, dataconclusao, prioridade, status, descricao);
+           
             repositorio.gravar(tarefa);
-            JOptionPane.showMessageDialog(null,tarefa.getTitulo() + " criada com Sucesso!");
+            JOptionPane.showMessageDialog(null,"Tarefa: "+tarefa.getTitulo() + ", criada com Sucesso!");
 
             txtTitulo.setText("");
             txtDescricao.setText("");
+            txtDataConclusao.setText("");
             
         });
         
@@ -59,7 +70,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         btnConfirmar = new javax.swing.JButton();
         btnAnexo = new javax.swing.JButton();
         btnListarTarefa = new javax.swing.JButton();
-        txtTitulo1 = new javax.swing.JTextField();
+        txtDataConclusao = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -80,7 +91,6 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Conclusão");
 
-        comboStatus.setEditable(true);
         comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Concluído", "Concluído" }));
         comboStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,9 +131,9 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
 
         btnListarTarefa.setText("Listar");
 
-        txtTitulo1.addActionListener(new java.awt.event.ActionListener() {
+        txtDataConclusao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTitulo1ActionPerformed(evt);
+                txtDataConclusaoActionPerformed(evt);
             }
         });
 
@@ -145,8 +155,8 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAnexo)))
+                                    .addComponent(btnAnexo)
+                                    .addComponent(txtDataConclusao, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -186,7 +196,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDataConclusao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,7 +207,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnListarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -223,21 +233,16 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
     }//GEN-LAST:event_comboPrioridadeActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
-
-         
-         comboStatus.setEnabled(false);
-         
-         
+   
     }//GEN-LAST:event_formWindowOpened
 
     private void comboStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboStatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboStatusActionPerformed
 
-    private void txtTitulo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTitulo1ActionPerformed
+    private void txtDataConclusaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataConclusaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTitulo1ActionPerformed
+    }//GEN-LAST:event_txtDataConclusaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,9 +298,9 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtDataConclusao;
     private javax.swing.JTextArea txtDescricao;
     private javax.swing.JTextField txtTitulo;
-    private javax.swing.JTextField txtTitulo1;
     // End of variables declaration//GEN-END:variables
 
    
