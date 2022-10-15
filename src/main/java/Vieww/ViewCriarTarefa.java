@@ -10,14 +10,18 @@ import java.text.DateFormat;
 
 public class ViewCriarTarefa extends javax.swing.JFrame {
 
+    int numerotarefa = 0;
+    
     public ViewCriarTarefa() {
         initComponents();
+        
+       
         
         btnConfirmar.addActionListener((e) -> {
             
             TarefaInterface repositorio = new TarefaDAO();
             
-            int numerotarefa = 0;
+            numerotarefa++;
             
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
             Date date = new Date(); 
@@ -30,9 +34,11 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
             String prioridade = (String) comboPrioridade.getSelectedItem();
             String status = (String) comboStatus.getSelectedItem();
             String descricao = txtDescricao.getText();  
+            
             Tarefa tarefa = new Tarefa(numerotarefa, datahoracriacao, titulo, dataconclusao, prioridade, status, descricao);
            
             repositorio.gravar(tarefa);
+            
             JOptionPane.showMessageDialog(null,"Tarefa: "+tarefa.getTitulo() + ", criada com Sucesso!");
 
             txtTitulo.setText("");
