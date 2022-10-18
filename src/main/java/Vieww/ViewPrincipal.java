@@ -40,6 +40,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         btnEditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         campoGeral = new javax.swing.JTable();
+        btnCriarModulo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -86,6 +87,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(campoGeral);
 
+        btnCriarModulo.setText("Criar Modulo");
+        btnCriarModulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarModuloActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,7 +106,9 @@ public class ViewPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(61, 61, 61)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                        .addComponent(btnCriarModulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCriar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEditar)
@@ -118,7 +128,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnCriar)
                         .addComponent(btnEditar)
-                        .addComponent(btnAtualizar1)))
+                        .addComponent(btnAtualizar1)
+                        .addComponent(btnCriarModulo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -143,9 +154,14 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnAtualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizar1ActionPerformed
-
-        
+        TarefaInterface repositorio = new TarefaDAO();
+        TarefaTableModel model = new TarefaTableModel(repositorio.buscarTodasTarefas());
+        campoGeral.setModel(model);
     }//GEN-LAST:event_btnAtualizar1ActionPerformed
+
+    private void btnCriarModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarModuloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCriarModuloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,6 +201,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizar1;
     private javax.swing.JButton btnCriar;
+    private javax.swing.JButton btnCriarModulo;
     private javax.swing.JButton btnEditar;
     private javax.swing.JTable campoGeral;
     private javax.swing.JComboBox<String> jComboBox1;

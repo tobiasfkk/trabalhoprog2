@@ -34,4 +34,9 @@ public class TarefaDAO implements TarefaInterface{
     public List<Tarefa> buscarTodasTarefas() {
         return tarefas;
     }
+    
+  //  @Override
+   // public List<Tarefa> editarTarefa() {
+   //     return tarefas;
+    //}
 }
