@@ -239,8 +239,8 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnAnexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnexoActionPerformed
-        ViewAnexo viewAnexo = new ViewAnexo();
-        viewAnexo.setVisible(true);
+        ViewAnaexo anexo = new ViewAnaexo();
+        anexo.setVisible(true);
     }//GEN-LAST:event_btnAnexoActionPerformed
 
     private void txtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloActionPerformed
