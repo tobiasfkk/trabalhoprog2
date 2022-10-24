@@ -33,15 +33,16 @@ public class Arquivo {
                 }
                 arq.close();
                 return conteudo;
-            } catch (IOException ex) {
-                System.out.println("Erro: Não foi possível ler o arquivo!");
+            }catch (IOException ex){
+                System.out.println("Erro: Não foi possivel ler o arquivo!");
                 return "";
             }
-        } catch (FileNotFoundException ex) {
-            System.out.println("Erro: Arquivo não encontrado!");
+        } catch (FileNotFoundException ex){
+            System.out.println("Erro Arquivo não encontrado");
             return "";
-        }
+            }    
     }
+
     
     public static boolean Write(String Caminho,String Texto){
         try {
