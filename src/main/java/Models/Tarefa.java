@@ -11,10 +11,13 @@ public class Tarefa {
     private String prioridade;
     private String status;
     private String descricao;
+    private String arquivo;
+    private String anexo;
+
    
 
-    
-    public Tarefa(int numerotarefa, String datahoracriacao, String titulo, String dataconclusao, String prioridade, String status, String descricao) {
+   
+    public Tarefa(int numerotarefa, String datahoracriacao, String titulo, String dataconclusao, String prioridade, String status, String descricao, String anexo) {
         
         this.numerotarefa = numerotarefa;
         this.datahoracriacao = datahoracriacao;
@@ -23,8 +26,18 @@ public class Tarefa {
         this.prioridade = prioridade;
         this.status = status;
         this.descricao = descricao;
+        this.anexo = anexo;
+        }
+            
         
+    public String getAnexo() {
+        return anexo;
     }
+
+    public void setAnexo(String anexo) {
+        this.anexo = anexo;
+    }    
+    
     
     public int getNumeroTarefa() {
         return numerotarefa;
@@ -76,7 +89,7 @@ public class Tarefa {
 
     @Override
     public String toString() {
-        return numerotarefa + " - " + titulo + " - "+ datahoracriacao + " - " + prioridade + " - "  + status + " - " + descricao ;
+        return numerotarefa + " - " + titulo + " - "+ datahoracriacao + " - " + prioridade + " - "  + status + " - " + descricao + " - " + anexo ;
     }
     
     
