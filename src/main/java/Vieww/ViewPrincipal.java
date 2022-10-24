@@ -176,10 +176,10 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnAtualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizar1ActionPerformed
-        int iend = ComboModulo.toString().indexOf("-");
-        String ModuloCodigoStr = ComboModulo.toString().substring(0 , iend);
-        int ModuloCodigo = Integer.parseInt(ModuloCodigoStr);
-        System.out.println(ModuloCodigoStr);
+//        int iend = ComboModulo.toString().indexOf("-");
+//        String ModuloCodigoStr = ComboModulo.toString().substring(0 , iend);
+//        int numeromodulo = Integer.parseInt(ModuloCodigoStr);
+//        System.out.println(ModuloCodigoStr);
         TarefaInterface repositorio = new TarefaDAO();
         TarefaTableModel model = new TarefaTableModel(repositorio.buscarTodasTarefas());
         campoGeral.setModel(model);

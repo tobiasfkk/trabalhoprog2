@@ -17,7 +17,7 @@ public class Tarefa {
    
 
    
-    public Tarefa(int numerotarefa, String datahoracriacao, String titulo, String dataconclusao, String prioridade, String status, String descricao, String anexo,int Modulo) {
+    public Tarefa(int numerotarefa, String datahoracriacao, String titulo, String dataconclusao, String prioridade, String status, String descricao, String anexo) {
         this.numerotarefa = numerotarefa;
         this.datahoracriacao = datahoracriacao;
         this.titulo = titulo;
@@ -26,7 +26,7 @@ public class Tarefa {
         this.status = status;
         this.descricao = descricao;
         this.anexo = anexo;
-        this.Modulo = Modulo
+       // this.Modulo = Modulo;
         }
              
    
@@ -111,7 +111,7 @@ public class Tarefa {
 
     @Override
     public String toString() {
-        return numerotarefa + " - " + titulo + " - "+ datahoracriacao + " - " + prioridade + " - "  + status + " - " + descricao + " - " + anexo + " - " + modulo;
+        return numerotarefa + " - " + titulo + " - "+ datahoracriacao + " - " + prioridade + " - "  + status + " - " + descricao + " - " + anexo + " - " + Modulo;
     }
     
     
