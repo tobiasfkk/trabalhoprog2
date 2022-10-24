@@ -12,13 +12,12 @@ public class Tarefa {
     private String status;
     private String descricao;
     private String arquivo;
-    private String anexo;
-
+    private String anexo; 
+    private int Modulo;
    
 
    
-    public Tarefa(int numerotarefa, String datahoracriacao, String titulo, String dataconclusao, String prioridade, String status, String descricao, String anexo) {
-        
+    public Tarefa(int numerotarefa, String datahoracriacao, String titulo, String dataconclusao, String prioridade, String status, String descricao, String anexo,int Modulo) {
         this.numerotarefa = numerotarefa;
         this.datahoracriacao = datahoracriacao;
         this.titulo = titulo;
@@ -27,17 +26,40 @@ public class Tarefa {
         this.status = status;
         this.descricao = descricao;
         this.anexo = anexo;
+        this.Modulo = Modulo
         }
-            
-        
+             
+   
     public String getAnexo() {
         return anexo;
     }
+
 
     public void setAnexo(String anexo) {
         this.anexo = anexo;
     }    
     
+
+    public String getDataconclusao() {
+        return dataconclusao;
+    }
+
+    public int getModulo() {
+        return Modulo;
+    }
+
+    public void setDataconclusao(String dataconclusao) {
+        this.dataconclusao = dataconclusao;
+    }
+
+    public void setDatahoracriacao(String datahoracriacao) {
+        this.datahoracriacao = datahoracriacao;
+    }
+
+    public void setModulo(int Modulo) {
+        this.Modulo = Modulo;
+    }
+
     
     public int getNumeroTarefa() {
         return numerotarefa;
@@ -89,7 +111,7 @@ public class Tarefa {
 
     @Override
     public String toString() {
-        return numerotarefa + " - " + titulo + " - "+ datahoracriacao + " - " + prioridade + " - "  + status + " - " + descricao + " - " + anexo ;
+        return numerotarefa + " - " + titulo + " - "+ datahoracriacao + " - " + prioridade + " - "  + status + " - " + descricao + " - " + anexo + " - " + modulo;
     }
     
     
