@@ -2,27 +2,34 @@ package Vieww;
 
 import DAO.TarefaDAO;
 import Models.Tarefa;
+import DAO.ModuloDAO;
+import Models.Modulo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import interfaces.TarefaInterface;
+import interfaces.ModuloInterface;
 import java.text.DateFormat;
 
 public class ViewCriarTarefa extends javax.swing.JFrame {
 
-    int numerotarefa = 0;
-    
+    static int numerotarefa;
+
     public ViewCriarTarefa() {
+      
         initComponents();
+        ModuloInterface repositorioModulo = new ModuloDAO();
         
-       
+        for (Modulo modulo : repositorioModulo.buscarTodosModulos()) {
+            this.ComboModulo.addItem(modulo);
+        }
         
         btnConfirmar.addActionListener((e) -> {
             
             TarefaInterface repositorio = new TarefaDAO();
             
             numerotarefa++;
-            
+
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
             Date date = new Date(); 
             String datahoracriacao = dateFormat.format(date); 
@@ -30,12 +37,13 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
             String titulo = txtTitulo.getText();
             
             String dataconclusao = txtDataConclusao.getText();
-            
+           
             String prioridade = (String) comboPrioridade.getSelectedItem();
             String status = (String) comboStatus.getSelectedItem();
             String descricao = txtDescricao.getText();  
+            int modulo = 1;
             
-            Tarefa tarefa = new Tarefa(numerotarefa, datahoracriacao, titulo, dataconclusao, prioridade, status, descricao);
+            Tarefa tarefa = new Tarefa(numerotarefa, datahoracriacao, titulo, dataconclusao, prioridade, status, descricao, modulo);
            
             repositorio.gravar(tarefa);
             
@@ -74,7 +82,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         txtDataConclusao = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ComboModulo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -146,7 +154,11 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
 
         jLabel7.setText("Módulo");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboModulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboModuloActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,7 +181,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ComboModulo, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnAnexo))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(comboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,7 +229,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboModulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,6 +275,10 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDataConclusaoActionPerformed
 
+    private void ComboModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboModuloActionPerformed
+            
+    }//GEN-LAST:event_ComboModuloActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -306,11 +322,11 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<Modulo> ComboModulo;
     private javax.swing.JButton btnAnexo;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JComboBox<String> comboPrioridade;
     private javax.swing.JComboBox<String> comboStatus;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -323,8 +339,6 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
     private javax.swing.JTextArea txtDescricao;
     private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
-
-   
 
   
 }

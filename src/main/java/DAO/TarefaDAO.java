@@ -15,7 +15,7 @@ public class TarefaDAO implements TarefaInterface{
            tarefas = new ArrayList<>();
     }
     
-    
+   
     @Override
     public void gravar(Tarefa tarefa) {
         tarefas.add(tarefa);
@@ -35,8 +35,12 @@ public class TarefaDAO implements TarefaInterface{
         return tarefas;
     }
     
-  //  @Override
-   // public List<Tarefa> editarTarefa() {
-   //     return tarefas;
-    //}
+    @Override 
+    public List<Tarefa> buscarTodasTarefasModulo(int modulo) {
+        for(Tarefa tarefa : tarefas){
+            if (tarefa.getModulo() == modulo)
+                return tarefas;
+        }
+        return null;
+    }
 }

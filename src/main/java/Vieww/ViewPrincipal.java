@@ -8,6 +8,12 @@ import DAO.TarefaDAO;
 import Models.TarefaTableModel;
 import interfaces.TarefaInterface;
 
+import DAO.ModuloDAO;
+import Models.Modulo;
+import Models.Tarefa;
+import interfaces.ModuloInterface;
+import java.util.List;
+
 /**
  *
  * @author 08599501909
@@ -19,6 +25,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
      */
     public ViewPrincipal() {
         initComponents();
+        
+        ModuloInterface repositorioModulo = new ModuloDAO();
+        
+        for (Modulo modulo : repositorioModulo.buscarTodosModulos()) {
+            this.ComboModulo.addItem(modulo.toString());
+        }
+        
         TarefaInterface repositorio = new TarefaDAO();
         TarefaTableModel model = new TarefaTableModel(repositorio.buscarTodasTarefas());
         campoGeral.setModel(model);
@@ -33,7 +46,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ComboModulo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         btnCriar = new javax.swing.JButton();
         btnAtualizar1 = new javax.swing.JButton();
@@ -41,13 +54,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         campoGeral = new javax.swing.JTable();
         btnCriarModulo = new javax.swing.JButton();
+        textoteste = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Faculdade", "Trabalho", "Pessoal" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        ComboModulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                ComboModuloActionPerformed(evt);
             }
         });
 
@@ -94,6 +107,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
             }
         });
 
+        textoteste.setText("jTextField1");
+        textoteste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textotesteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,8 +125,10 @@ public class ViewPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(61, 61, 61)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                        .addComponent(ComboModulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textoteste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addComponent(btnCriarModulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCriar)
@@ -124,7 +146,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(ComboModulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoteste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnCriar)
                         .addComponent(btnEditar)
@@ -138,15 +161,14 @@ public class ViewPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void ComboModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboModuloActionPerformed
+        String modulo = ComboModulo.getSelectedItem().toString();
+        textoteste.setText(modulo);
+    }//GEN-LAST:event_ComboModuloActionPerformed
 
-    
-    
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
-       ViewCriarTarefa viewTarefa = new ViewCriarTarefa();
-       viewTarefa.setVisible(true);
+        ViewCriarTarefa viewTarefa = new ViewCriarTarefa();
+        viewTarefa.setVisible(true);
     }//GEN-LAST:event_btnCriarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -154,14 +176,23 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnAtualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizar1ActionPerformed
+        int iend = ComboModulo.toString().indexOf("-");
+        String ModuloCodigoStr = ComboModulo.toString().substring(0 , iend);
+        int ModuloCodigo = Integer.parseInt(ModuloCodigoStr);
+        System.out.println(ModuloCodigoStr);
         TarefaInterface repositorio = new TarefaDAO();
         TarefaTableModel model = new TarefaTableModel(repositorio.buscarTodasTarefas());
         campoGeral.setModel(model);
     }//GEN-LAST:event_btnAtualizar1ActionPerformed
 
     private void btnCriarModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarModuloActionPerformed
-        // TODO add your handling code here:
+        ViewCriarModulo viewModulo = new ViewCriarModulo();
+        viewModulo.setVisible(true);
     }//GEN-LAST:event_btnCriarModuloActionPerformed
+
+    private void textotesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textotesteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textotesteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,13 +230,14 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboModulo;
     private javax.swing.JButton btnAtualizar1;
     private javax.swing.JButton btnCriar;
     private javax.swing.JButton btnCriarModulo;
     private javax.swing.JButton btnEditar;
     private javax.swing.JTable campoGeral;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField textoteste;
     // End of variables declaration//GEN-END:variables
 }

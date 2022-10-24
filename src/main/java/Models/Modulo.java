@@ -63,5 +63,9 @@ public class Modulo {
     public String getStatus() {
         return status;
     }
-    
+
+    @Override
+    public String toString() {
+        return numeromodulo + " - " + nomemodulo + " - " + descricaomodulo;
+    }
 }

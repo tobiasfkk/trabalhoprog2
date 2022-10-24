@@ -9,6 +9,7 @@ import java.util.List;
     public void gravar(Tarefa tarefa);
     public Tarefa buscar(Date data);
     public List<Tarefa> buscarTodasTarefas();
+    public List<Tarefa> buscarTodasTarefasModulo(int modulo);
     
 //    Tarefa gravar(String titulo);
 //    void addTarefa(Tarefa tarefa);

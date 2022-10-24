@@ -11,10 +11,11 @@ public class Tarefa {
     private String prioridade;
     private String status;
     private String descricao;
+    private int Modulo;
    
 
     
-    public Tarefa(int numerotarefa, String datahoracriacao, String titulo, String dataconclusao, String prioridade, String status, String descricao) {
+    public Tarefa(int numerotarefa, String datahoracriacao, String titulo, String dataconclusao, String prioridade, String status, String descricao, int Modulo) {
         
         this.numerotarefa = numerotarefa;
         this.datahoracriacao = datahoracriacao;
@@ -23,7 +24,28 @@ public class Tarefa {
         this.prioridade = prioridade;
         this.status = status;
         this.descricao = descricao;
+        this.Modulo = Modulo;
         
+    }
+
+    public String getDataconclusao() {
+        return dataconclusao;
+    }
+
+    public int getModulo() {
+        return Modulo;
+    }
+
+    public void setDataconclusao(String dataconclusao) {
+        this.dataconclusao = dataconclusao;
+    }
+
+    public void setDatahoracriacao(String datahoracriacao) {
+        this.datahoracriacao = datahoracriacao;
+    }
+
+    public void setModulo(int Modulo) {
+        this.Modulo = Modulo;
     }
     
     public int getNumeroTarefa() {
