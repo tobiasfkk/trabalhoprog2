@@ -12,6 +12,7 @@ import DAO.ModuloDAO;
 import Models.Modulo;
 import Models.Tarefa;
 import interfaces.ModuloInterface;
+import java.awt.Point;
 import java.util.List;
 
 /**
@@ -25,13 +26,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
      */
     public ViewPrincipal() {
         initComponents();
-        
-        ModuloInterface repositorioModulo = new ModuloDAO();
-        
-        for (Modulo modulo : repositorioModulo.buscarTodosModulos()) {
-            this.ComboModulo.addItem(modulo);
-        }
-        
         TarefaInterface repositorio = new TarefaDAO();
         TarefaTableModel model = new TarefaTableModel(repositorio.buscarTodasTarefas());
         campoGeral.setModel(model);
@@ -175,6 +169,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarActionPerformed
 
+    public void addmodulo(Modulo modulo){
+        ModuloInterface repositorioModulo = new ModuloDAO();
+        //for (Modulo modulo : repositorioModulo.buscarTodosModulos()) {
+            this.ComboModulo.addItem(modulo);
+        //}
+    }
+    
     private void btnAtualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizar1ActionPerformed
 //        int iend = ComboModulo.toString().indexOf("-");
 //        String ModuloCodigoStr = ComboModulo.toString().substring(0 , iend);
@@ -182,10 +183,12 @@ public class ViewPrincipal extends javax.swing.JFrame {
 //        System.out.println(ModuloCodigoStr);
         TarefaInterface repositorio = new TarefaDAO();
         TarefaTableModel model = new TarefaTableModel(repositorio.buscarTodasTarefas());
+        //TarefaTableModel model = new TarefaTableModel(repositorio.buscarTodasTarefasModulo(ComboModulo.getItemCount()));
         campoGeral.setModel(model);
         
         ModuloInterface repositorioModulo = new ModuloDAO();
         
+        this.ComboModulo.removeAllItems();
         for (Modulo modulo : repositorioModulo.buscarTodosModulos()) {
             this.ComboModulo.addItem(modulo);
         }

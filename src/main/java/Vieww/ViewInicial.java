@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import interfaces.TarefaInterface;
 import java.text.DateFormat;
+import javax.swing.ImageIcon;
 
 public class ViewInicial extends javax.swing.JFrame {
 
@@ -17,6 +18,7 @@ public class ViewInicial extends javax.swing.JFrame {
      */
     public ViewInicial() {
         initComponents();
+        insereImagemLabel();
     }
 
     /**
@@ -28,10 +30,18 @@ public class ViewInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jlImagem = new javax.swing.JLabel();
         btn_iniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlImagem.setPreferredSize(new java.awt.Dimension(600, 600));
+        jPanel1.add(jlImagem);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 700, 590));
 
         btn_iniciar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_iniciar.setText("INICIAR");
@@ -40,7 +50,7 @@ public class ViewInicial extends javax.swing.JFrame {
                 btn_iniciarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 100, 40));
+        getContentPane().add(btn_iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -87,5 +97,13 @@ public class ViewInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_iniciar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jlImagem;
     // End of variables declaration//GEN-END:variables
+
+    private void insereImagemLabel() {
+        ImageIcon imagem = new ImageIcon ("src/main/java/imagens/imagem1.png");
+        imagem.setImage(imagem.getImage().getScaledInstance(jlImagem.getWidth(),jlImagem.getHeight(),1));
+        jlImagem.setIcon(imagem);
+         }
 }
