@@ -173,6 +173,12 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
 
         jLabel7.setText("Módulo");
 
+        ComboModulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboModuloActionPerformed(evt);
+            }
+        });
+
         txtNomeArquivo.setEnabled(false);
         txtNomeArquivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -361,6 +367,10 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
     private void dataConclusaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataConclusaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dataConclusaoActionPerformed
+
+    private void ComboModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboModuloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboModuloActionPerformed
 
     /**
      * @param args the command line arguments

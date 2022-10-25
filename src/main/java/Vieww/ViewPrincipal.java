@@ -29,7 +29,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         ModuloInterface repositorioModulo = new ModuloDAO();
         
         for (Modulo modulo : repositorioModulo.buscarTodosModulos()) {
-            this.ComboModulo.addItem(modulo.toString());
+            this.ComboModulo.addItem(modulo);
         }
         
         TarefaInterface repositorio = new TarefaDAO();
@@ -183,6 +183,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
         TarefaInterface repositorio = new TarefaDAO();
         TarefaTableModel model = new TarefaTableModel(repositorio.buscarTodasTarefas());
         campoGeral.setModel(model);
+        
+        ModuloInterface repositorioModulo = new ModuloDAO();
+        
+        for (Modulo modulo : repositorioModulo.buscarTodosModulos()) {
+            this.ComboModulo.addItem(modulo);
+        }
+
     }//GEN-LAST:event_btnAtualizar1ActionPerformed
 
     private void btnCriarModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarModuloActionPerformed
@@ -230,7 +237,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboModulo;
+    private javax.swing.JComboBox<Modulo> ComboModulo;
     private javax.swing.JButton btnAtualizar1;
     private javax.swing.JButton btnCriar;
     private javax.swing.JButton btnCriarModulo;
