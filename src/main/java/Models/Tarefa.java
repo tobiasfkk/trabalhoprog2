@@ -48,7 +48,10 @@ public class Tarefa {
         return Modulo;
     }
 
-    public void setDataconclusao(String dataconclusao) {
+    public void setDataconclusao(String dataconclusao) throws CampoVazioException{
+        if(dataconclusao.equalsIgnoreCase("  /  /  ")){
+            throw new CampoVazioException();
+        }
         this.dataconclusao = dataconclusao;
     }
 
@@ -93,7 +96,7 @@ public class Tarefa {
         this.numerotarefa = numerotarefa;
     }
     
-    /*metodo pra q retorna msg de erro caso usuario deixe o campo vazio*/ //n ta funcionando mas tobi vai arrumar
+    /*metodo pra q retorna msg de erro caso usuario deixe o campo vazio*/ // ta funcionando tobi é bom dms
     public void setTitulo(String titulo) throws CampoVazioException {
         if(titulo.isBlank()) {
             throw new CampoVazioException();

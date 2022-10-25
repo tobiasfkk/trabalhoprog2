@@ -2,6 +2,7 @@ package Vieww;
 
 import DAO.ModuloDAO;
 import DAO.TarefaDAO;
+import Exception.CampoVazioException;
 import Models.Anexo;
 import Models.ManipularImagem;
 import Models.Modulo;
@@ -47,33 +48,35 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
            
             TarefaInterface repositorio = new TarefaDAO();
             
-            numerotarefa++;
-            
-            
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
-            Date date = new Date(); 
-            String datahoracriacao = dateFormat.format(date); 
-            
-            String titulo = txtTitulo.getText();
-            
-            String dataconclusao = dataConclusao.getText();
-            
-            String prioridade = (String) comboPrioridade.getSelectedItem();
-            String status = (String) comboStatus.getSelectedItem();
-            String descricao = txtDescricao.getText();
-            enviarImagem();
-            String anexo = txtNomeArquivo.getText();
-               
-            Tarefa tarefa = new Tarefa(numerotarefa, datahoracriacao, titulo, dataconclusao, prioridade, status, descricao, anexo);
-           
-            repositorio.gravar(tarefa);
-            
-            JOptionPane.showMessageDialog(null,"Tarefa: "+tarefa.getTitulo() + ", criada com Sucesso!");
-            System.out.println(tarefa);
-            txtTitulo.setText("");
-            txtDescricao.setText("");
-            txtNomeArquivo.setText("");
-            
+            try{
+                numerotarefa++;         
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+                Date date = new Date(); 
+                String datahoracriacao = dateFormat.format(date); 
+                String titulo = txtTitulo.getText();
+                
+                String dataconclusao = dataConclusao.getText();
+                String prioridade = (String) comboPrioridade.getSelectedItem();
+                String status = (String) comboStatus.getSelectedItem();
+                String descricao = txtDescricao.getText();
+                enviarImagem();
+                String anexo = txtNomeArquivo.getText();
+
+                Tarefa tarefa = new Tarefa(numerotarefa, datahoracriacao, titulo, dataconclusao, prioridade, status, descricao, anexo);
+                tarefa.setTitulo(titulo);
+                tarefa.setDataconclusao(dataconclusao);
+                repositorio.gravar(tarefa);
+
+                JOptionPane.showMessageDialog(null,"Tarefa: "+tarefa.getTitulo() + ", criada com Sucesso!");
+                System.out.println(tarefa);
+
+                txtTitulo.setText("");
+                txtDescricao.setText("");
+                txtNomeArquivo.setText("");
+                dataConclusao.setText("");
+            } catch (CampoVazioException | NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null,"Título e Conclusão não podem ser vazios!");
+            }
         });
     }
       
