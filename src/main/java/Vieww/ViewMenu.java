@@ -69,6 +69,11 @@ public class ViewMenu extends javax.swing.JFrame {
         });
 
         BtnVisualizarCategoria.setText("Visualizar Categoria");
+        BtnVisualizarCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnVisualizarCategoriaActionPerformed(evt);
+            }
+        });
 
         BtnCadastrarCategoria.setText("Cadastrar Categoria");
         BtnCadastrarCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +175,10 @@ public class ViewMenu extends javax.swing.JFrame {
         ViewCriarCategoria viewCategoria = new ViewCriarCategoria();
         viewCategoria.setVisible(true);
     }//GEN-LAST:event_BtnCadastrarCategoriaActionPerformed
+
+    private void BtnVisualizarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVisualizarCategoriaActionPerformed
+        
+    }//GEN-LAST:event_BtnVisualizarCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
