@@ -8,12 +8,12 @@ import DAO.TarefaDAO;
 import Models.TarefaTableModel;
 import interfaces.TarefaInterface;
 
-import DAO.ModuloDAO;
-import Models.Modulo;
+import DAO.CategoriaDAO;
+import Models.Categoria;
 import Models.Tarefa;
-import interfaces.ModuloInterface;
 import java.awt.Point;
 import java.util.List;
+import interfaces.CategoriaInterface;
 
 /**
  *
@@ -169,10 +169,10 @@ public class ViewPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    public void addmodulo(Modulo modulo){
-        ModuloInterface repositorioModulo = new ModuloDAO();
+    public void addCategoria(Categoria Categoria){
+        //CategoriaInterface repositorioCategoria = new CategoriaDAO();
         //for (Modulo modulo : repositorioModulo.buscarTodosModulos()) {
-            this.ComboModulo.addItem(modulo);
+            this.ComboModulo.addItem(Categoria);
         //}
     }
     
@@ -186,18 +186,18 @@ public class ViewPrincipal extends javax.swing.JFrame {
         //TarefaTableModel model = new TarefaTableModel(repositorio.buscarTodasTarefasModulo(ComboModulo.getItemCount()));
         campoGeral.setModel(model);
         
-        ModuloInterface repositorioModulo = new ModuloDAO();
+        CategoriaInterface repositorioModulo = new CategoriaDAO();
         
         this.ComboModulo.removeAllItems();
-        for (Modulo modulo : repositorioModulo.buscarTodosModulos()) {
+        for (Categoria modulo : repositorioModulo.buscarTodosModulos()) {
             this.ComboModulo.addItem(modulo);
         }
 
     }//GEN-LAST:event_btnAtualizar1ActionPerformed
 
     private void btnCriarModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarModuloActionPerformed
-        ViewCriarModulo viewModulo = new ViewCriarModulo();
-        viewModulo.setVisible(true);
+        ViewCriarCategoria viewCategoria = new ViewCriarCategoria();
+        viewCategoria.setVisible(true);
     }//GEN-LAST:event_btnCriarModuloActionPerformed
 
     private void textotesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textotesteActionPerformed
@@ -240,7 +240,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Modulo> ComboModulo;
+    private javax.swing.JComboBox<Categoria> ComboModulo;
     private javax.swing.JButton btnAtualizar1;
     private javax.swing.JButton btnCriar;
     private javax.swing.JButton btnCriarModulo;

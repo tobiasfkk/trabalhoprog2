@@ -1,11 +1,11 @@
 package Vieww;
 
-import DAO.ModuloDAO;
+import DAO.CategoriaDAO;
 import DAO.TarefaDAO;
 import Exception.CampoVazioException;
 import Models.Anexo;
 import Models.ManipularImagem;
-import Models.Modulo;
+import Models.Categoria;
 import Models.Tarefa;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,8 +23,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import interfaces.TarefaInterface;
-import interfaces.ModuloInterface;
 import java.text.DateFormat;
+import interfaces.CategoriaInterface;
 
 public class ViewCriarTarefa extends javax.swing.JFrame {
     BufferedImage imagem;
@@ -36,9 +36,9 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
     public ViewCriarTarefa() {
         initComponents();
         
-        ModuloInterface repositorioModulo = new ModuloDAO();
+        CategoriaInterface repositorioModulo = new CategoriaDAO();
         
-        for (Modulo modulo : repositorioModulo.buscarTodosModulos()) {
+        for (Categoria modulo : repositorioModulo.buscarTodosModulos()) {
             this.ComboModulo.addItem(modulo.getNomemodulo());
         }
        
@@ -171,7 +171,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         jLabel6.setText("Cadastrar Tarefa");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel7.setText("Módulo");
+        jLabel7.setText("Categoria");
 
         ComboModulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -8,7 +8,7 @@ package Models;
  *
  * @author 10264021908
  */
-public class Modulo {
+public class Categoria {
     
     private int numeromodulo;
     private String nomemodulo;
@@ -16,7 +16,7 @@ public class Modulo {
     private String datahoracriacao;
     private String status;
 
-    public Modulo(int numeromodulo, String nomemodulo, String descricaomodulo, String datahoracriacao, String status) {
+    public Categoria(int numeromodulo, String nomemodulo, String descricaomodulo, String datahoracriacao, String status) {
         this.numeromodulo = numeromodulo;
         this.nomemodulo = nomemodulo;
         this.descricaomodulo = descricaomodulo;

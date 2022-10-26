@@ -35,13 +35,13 @@ public class ViewInicial extends javax.swing.JFrame {
         btn_iniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(350, 350));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlImagem.setPreferredSize(new java.awt.Dimension(600, 600));
+        jlImagem.setPreferredSize(new java.awt.Dimension(300, 400));
         jPanel1.add(jlImagem);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 700, 590));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 310, 410));
 
         btn_iniciar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_iniciar.setText("INICIAR");
@@ -50,14 +50,14 @@ public class ViewInicial extends javax.swing.JFrame {
                 btn_iniciarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
+        getContentPane().add(btn_iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 260, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarActionPerformed
-       ViewPrincipal viewPrincipal = new ViewPrincipal();
-       viewPrincipal.setVisible(true);
+       ViewMenu viewMenu = new ViewMenu();
+       viewMenu.setVisible(true);
     }//GEN-LAST:event_btn_iniciarActionPerformed
 
     /**
@@ -102,7 +102,7 @@ public class ViewInicial extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void insereImagemLabel() {
-        ImageIcon imagem = new ImageIcon ("src/main/java/imagens/imagem1.png");
+        ImageIcon imagem = new ImageIcon ("src/main/java/imagens/ImagemTelaInicial.png");
         imagem.setImage(imagem.getImage().getScaledInstance(jlImagem.getWidth(),jlImagem.getHeight(),1));
         jlImagem.setIcon(imagem);
          }

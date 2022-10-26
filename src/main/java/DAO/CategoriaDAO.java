@@ -1,27 +1,27 @@
 package DAO;
 
-import Models.Modulo;
-import interfaces.ModuloInterface;
+import Models.Categoria;
 import java.util.ArrayList;
 import java.util.List;
+import interfaces.CategoriaInterface;
 
-public class ModuloDAO implements ModuloInterface{
+public class CategoriaDAO implements CategoriaInterface{
     
-    private static List<Modulo>modulos;
+    private static List<Categoria>modulos;
 
-    public ModuloDAO(){
+    public CategoriaDAO(){
         if(modulos == null)
            modulos = new ArrayList<>();
     }
 
     @Override
-    public void gravar(Modulo modulo) {
+    public void gravar(Categoria modulo) {
         modulos.add(modulo);
     }
 
     @Override
-    public Modulo buscar(int numero) {
-        for(Modulo modulo : modulos){
+    public Categoria buscar(int numero) {
+        for(Categoria modulo : modulos){
              if (modulo.getNumeromodulo() == numero)
                  return modulo;
          }
@@ -29,7 +29,7 @@ public class ModuloDAO implements ModuloInterface{
     }
 
     @Override
-    public List<Modulo> buscarTodosModulos() {
+    public List<Categoria> buscarTodosModulos() {
         return modulos;
     }
     

@@ -1,14 +1,14 @@
 package interfaces;
 
-import Models.Modulo;
+import Models.Categoria;
 import java.util.Date;
 import java.util.List;
 
- public interface ModuloInterface {
+ public interface CategoriaInterface {
     
-    public void gravar(Modulo modulo);
-    public Modulo buscar(int numero);
-    public List<Modulo> buscarTodosModulos();
+    public void gravar(Categoria modulo);
+    public Categoria buscar(int numero);
+    public List<Categoria> buscarTodosModulos();
     
 //    Tarefa gravar(String titulo);
 //    void addTarefa(Tarefa tarefa);

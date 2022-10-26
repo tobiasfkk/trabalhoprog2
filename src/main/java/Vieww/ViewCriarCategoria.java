@@ -4,31 +4,31 @@
  */
 package Vieww;
 
-import DAO.ModuloDAO;
-import Models.Modulo;
-import interfaces.ModuloInterface;
+import DAO.CategoriaDAO;
+import Models.Categoria;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import interfaces.CategoriaInterface;
 
 /**
  *
  * @author lucas
  */
-public class ViewCriarModulo extends javax.swing.JFrame {
+public class ViewCriarCategoria extends javax.swing.JFrame {
 
-    static int numeromodulo;
+    static int numeroCategoria;
     
-    public ViewCriarModulo() {
+    public ViewCriarCategoria() {
         initComponents();
         
         
         btnConfirmar.addActionListener((e) -> {
             
-            ModuloInterface repositorio = new ModuloDAO();
+            CategoriaInterface repositorio = new CategoriaDAO();
             
-            numeromodulo++;
+            numeroCategoria++;
             
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
             Date date = new Date(); 
@@ -39,11 +39,11 @@ public class ViewCriarModulo extends javax.swing.JFrame {
             String situacao = "Ativo";
             String descricao = txtDescricao.getText();  
             
-            Modulo modulo = new Modulo(numeromodulo,  nome, descricao, datahoracriacao, situacao);
+            Categoria categoria = new Categoria(numeroCategoria,  nome, descricao, datahoracriacao, situacao);
            
-            repositorio.gravar(modulo);
+            repositorio.gravar(categoria);
             
-            JOptionPane.showMessageDialog(null,"Modulo: " + modulo.getNomemodulo()+ ", criado com Sucesso!");
+            JOptionPane.showMessageDialog(null,"Categoria: " + categoria.getNomemodulo()+ ", criado com Sucesso!");
 
             txtNome.setText("");
             txtDescricao.setText("");
@@ -190,21 +190,23 @@ public class ViewCriarModulo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewCriarModulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewCriarCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewCriarModulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewCriarCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewCriarModulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewCriarCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewCriarModulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewCriarCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewCriarModulo().setVisible(true);
+                new ViewCriarCategoria().setVisible(true);
             }
         });
     }
