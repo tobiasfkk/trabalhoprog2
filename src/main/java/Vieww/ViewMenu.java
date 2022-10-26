@@ -177,7 +177,8 @@ public class ViewMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCadastrarCategoriaActionPerformed
 
     private void BtnVisualizarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVisualizarCategoriaActionPerformed
-        
+        ViewAlterarCategoria viewAlterarCategoria = new ViewAlterarCategoria();
+        viewAlterarCategoria.setVisible(true);
     }//GEN-LAST:event_BtnVisualizarCategoriaActionPerformed
 
     /**
