@@ -36,18 +36,17 @@ public class ViewCriarCategoria extends javax.swing.JFrame {
             
             String nome = txtNome.getText();
             
-            String situacao = "Ativo";
+            String situacao = comboSituacao.getSelectedItem().toString();
             String descricao = txtDescricao.getText();  
             
             Categoria categoria = new Categoria(numeroCategoria,  nome, descricao, datahoracriacao, situacao);
            
             repositorio.gravar(categoria);
             
-            JOptionPane.showMessageDialog(null,"Categoria: " + categoria.getNomemodulo()+ ", criado com Sucesso!");
+            JOptionPane.showMessageDialog(null,"Categoria: " + categoria.getNomeCategoria()+ ", criado com Sucesso!");
 
             txtNome.setText("");
             txtDescricao.setText("");
-            txtSituacao.setText("");
         });
     }
 
@@ -65,14 +64,14 @@ public class ViewCriarCategoria extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtDescricao = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtSituacao = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JButton();
+        comboSituacao = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Módulos");
+        jLabel1.setText("Categoria");
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,13 +91,6 @@ public class ViewCriarCategoria extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Descrição");
 
-        txtSituacao.setEditable(false);
-        txtSituacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSituacaoActionPerformed(evt);
-            }
-        });
-
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Situação");
 
@@ -108,6 +100,8 @@ public class ViewCriarCategoria extends javax.swing.JFrame {
                 btnConfirmarActionPerformed(evt);
             }
         });
+
+        comboSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativa", "Inativa" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,7 +124,7 @@ public class ViewCriarCategoria extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(comboSituacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -148,7 +142,7 @@ public class ViewCriarCategoria extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 13, Short.MAX_VALUE))
@@ -164,10 +158,6 @@ public class ViewCriarCategoria extends javax.swing.JFrame {
     private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescricaoActionPerformed
-
-    private void txtSituacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSituacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSituacaoActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
 
@@ -213,12 +203,12 @@ public class ViewCriarCategoria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmar;
+    private javax.swing.JComboBox<String> comboSituacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSituacao;
     // End of variables declaration//GEN-END:variables
 }

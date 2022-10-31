@@ -7,6 +7,7 @@ package Vieww;
 import DAO.CategoriaDAO;
 import Models.Categoria;
 import interfaces.CategoriaInterface;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +23,7 @@ public class ViewAlterarCategoria extends javax.swing.JFrame {
         
         CategoriaInterface repositorioCategoria = new CategoriaDAO();
         
-        for (Categoria categoria : repositorioCategoria.buscarTodosModulos()) {
+        for (Categoria categoria : repositorioCategoria.buscarTodosCategorias()) {
             this.ComboCategoria.addItem(categoria);
         }
     }
@@ -41,15 +42,14 @@ public class ViewAlterarCategoria extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        CategoriaNome = new javax.swing.JTextField();
+        CategoriaDescricao = new javax.swing.JTextField();
         BtnSalvarAlteracao = new javax.swing.JButton();
         BtnDeletar = new javax.swing.JButton();
-        BtnFechar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        CategoriaSituacao = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         ComboCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,15 +68,15 @@ public class ViewAlterarCategoria extends javax.swing.JFrame {
         jLabel4.setText("Descrição");
         jLabel4.setToolTipText("");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        CategoriaNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                CategoriaNomeActionPerformed(evt);
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        CategoriaDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                CategoriaDescricaoActionPerformed(evt);
             }
         });
 
@@ -88,16 +88,19 @@ public class ViewAlterarCategoria extends javax.swing.JFrame {
         });
 
         BtnDeletar.setText("Deletar Registro");
-
-        BtnFechar.setText("Fechar");
+        BtnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDeletarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Situação");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
-        jComboBox2.setToolTipText("");
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        CategoriaSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
+        CategoriaSituacao.setToolTipText("");
+        CategoriaSituacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                CategoriaSituacaoActionPerformed(evt);
             }
         });
 
@@ -117,14 +120,13 @@ public class ViewAlterarCategoria extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
-                            .addComponent(ComboCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(CategoriaNome)
+                            .addComponent(ComboCategoria, 0, 309, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(BtnSalvarAlteracao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtnDeletar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                        .addComponent(BtnFechar))
+                        .addGap(18, 18, 18)
+                        .addComponent(BtnDeletar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -132,8 +134,8 @@ public class ViewAlterarCategoria extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(CategoriaDescricao)
+                            .addComponent(CategoriaSituacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -148,45 +150,57 @@ public class ViewAlterarCategoria extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CategoriaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CategoriaDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                    .addComponent(CategoriaSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnSalvarAlteracao)
-                    .addComponent(BtnDeletar)
-                    .addComponent(BtnFechar))
+                    .addComponent(BtnDeletar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void CategoriaDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoriaDescricaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_CategoriaDescricaoActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void CategoriaNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoriaNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_CategoriaNomeActionPerformed
 
     private void BtnSalvarAlteracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalvarAlteracaoActionPerformed
-        // TODO add your handling code here:
+        Categoria SelectedItem = (Categoria) this.ComboCategoria.getSelectedItem();
+        SelectedItem.setNomeCategoria(this.CategoriaNome.getText());
+        SelectedItem.setDescricaoCategoria(this.CategoriaDescricao.getText());
     }//GEN-LAST:event_BtnSalvarAlteracaoActionPerformed
 
     private void ComboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboCategoriaActionPerformed
-        // TODO add your handling code here:
+        //CategoriaDAO repositorioCategoria = new CategoriaDAO();
+        Categoria SelectedItem = (Categoria) this.ComboCategoria.getSelectedItem();
+        this.CategoriaNome.setText(SelectedItem.getNomeCategoria());
+        this.CategoriaDescricao.setText(SelectedItem.getDescricaoCategoria());
     }//GEN-LAST:event_ComboCategoriaActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void CategoriaSituacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoriaSituacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_CategoriaSituacaoActionPerformed
+
+    private void BtnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeletarActionPerformed
+        Categoria SelectedItem = (Categoria) this.ComboCategoria.getSelectedItem();
+        CategoriaInterface repositorioCategoria = new CategoriaDAO();
+        JOptionPane.showMessageDialog(null,"Categoria deletada com Sucesso!");
+        repositorioCategoria.remover(SelectedItem);
+        this.ComboCategoria.removeItem(SelectedItem);         
+    }//GEN-LAST:event_BtnDeletarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,16 +239,15 @@ public class ViewAlterarCategoria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnDeletar;
-    private javax.swing.JButton BtnFechar;
     private javax.swing.JButton BtnSalvarAlteracao;
+    private javax.swing.JTextField CategoriaDescricao;
+    private javax.swing.JTextField CategoriaNome;
+    private javax.swing.JComboBox<String> CategoriaSituacao;
     private javax.swing.JComboBox<Categoria> ComboCategoria;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

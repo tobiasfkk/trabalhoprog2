@@ -7,37 +7,36 @@ import interfaces.CategoriaInterface;
 
 public class CategoriaDAO implements CategoriaInterface{
     
-    private static List<Categoria>modulos;
+    private static List<Categoria>categorias;
 
     public CategoriaDAO(){
-        if(modulos == null)
-           modulos = new ArrayList<>();
+        if(categorias == null)
+           categorias = new ArrayList<>();
     }
 
     @Override
-    public void gravar(Categoria modulo) {
-        modulos.add(modulo);
+    public void gravar(Categoria categoria) {
+        categorias.add(categoria);
     }
 
     @Override
-    public Categoria buscar(int numero) {
-        for(Categoria modulo : modulos){
-             if (modulo.getNumeromodulo() == numero)
-                 return modulo;
+    public Categoria buscar(int numeroCategoria) {
+        for(Categoria categoria1 : categorias){
+             if (categoria1.getNumeroCategoria()== numeroCategoria)
+                 return categoria1;
          }
          return null;
     }
 
     @Override
-    public List<Categoria> buscarTodosModulos() {
-        return modulos;
+    public List<Categoria> buscarTodosCategorias() {
+        return categorias;
     }
-    
-      //  @Override
-   // public List<Tarefa> editarTarefa() {
-   //     return tarefas;
-    //}
 
+    @Override
+    public void remover(Categoria categoria) {
+        categorias.remove(categoria);
+    }
 }
 
 

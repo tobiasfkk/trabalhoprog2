@@ -25,7 +25,7 @@ public class ViewAlterarTarefa extends javax.swing.JFrame {
         
         CategoriaInterface repositorioCategoria = new CategoriaDAO();
         
-        for (Categoria categoria : repositorioCategoria.buscarTodosModulos()) {
+        for (Categoria categoria : repositorioCategoria.buscarTodosCategorias()) {
             this.ComboCategoria.addItem(categoria);
         }
         

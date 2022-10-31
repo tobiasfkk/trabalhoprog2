@@ -28,11 +28,8 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         LabelTitulo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        BtnCadastrarEvento = new javax.swing.JButton();
-        BtnVisualizarEvento = new javax.swing.JButton();
+        BtnCadastrarSubtarefa = new javax.swing.JButton();
+        BtnVisualizarSubtarefa = new javax.swing.JButton();
         BtnVisualizarTarefa = new javax.swing.JButton();
         BtnCadastrarTarefa = new javax.swing.JButton();
         BtnVisualizarCategoria = new javax.swing.JButton();
@@ -44,24 +41,26 @@ public class ViewMenu extends javax.swing.JFrame {
         LabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelTitulo.setText("MENU");
 
-        jLabel1.setText("Categoria");
-
-        jLabel2.setText("Tarefa");
-
-        jLabel3.setText("Evento");
-
-        BtnCadastrarEvento.setText("Cadastrar Evento");
-        BtnCadastrarEvento.addActionListener(new java.awt.event.ActionListener() {
+        BtnCadastrarSubtarefa.setText("Cadastrar Subtarefa");
+        BtnCadastrarSubtarefa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCadastrarEventoActionPerformed(evt);
+                BtnCadastrarSubtarefaActionPerformed(evt);
             }
         });
 
-        BtnVisualizarEvento.setText("Visualizar Evento");
+        BtnVisualizarSubtarefa.setText("Visualizar Subtarefa");
 
         BtnVisualizarTarefa.setText("Visualizar Tarefa");
+        BtnVisualizarTarefa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnVisualizarTarefaActionPerformed(evt);
+            }
+        });
 
         BtnCadastrarTarefa.setText("Cadastrar Tarefa");
+        BtnCadastrarTarefa.setMaximumSize(new java.awt.Dimension(133, 22));
+        BtnCadastrarTarefa.setMinimumSize(new java.awt.Dimension(133, 22));
+        BtnCadastrarTarefa.setPreferredSize(new java.awt.Dimension(133, 22));
         BtnCadastrarTarefa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCadastrarTarefaActionPerformed(evt);
@@ -76,6 +75,9 @@ public class ViewMenu extends javax.swing.JFrame {
         });
 
         BtnCadastrarCategoria.setText("Cadastrar Categoria");
+        BtnCadastrarCategoria.setMaximumSize(new java.awt.Dimension(133, 22));
+        BtnCadastrarCategoria.setMinimumSize(new java.awt.Dimension(133, 22));
+        BtnCadastrarCategoria.setPreferredSize(new java.awt.Dimension(133, 22));
         BtnCadastrarCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCadastrarCategoriaActionPerformed(evt);
@@ -83,6 +85,11 @@ public class ViewMenu extends javax.swing.JFrame {
         });
 
         BtnFechar.setText("Fechar");
+        BtnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnFecharActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -92,47 +99,39 @@ public class ViewMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(BtnFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LabelTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(BtnCadastrarTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtnVisualizarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(BtnCadastrarEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtnVisualizarEvento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(BtnCadastrarCategoria)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtnVisualizarCategoria)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(BtnCadastrarSubtarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtnVisualizarSubtarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(BtnCadastrarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(BtnVisualizarCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(BtnCadastrarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(BtnVisualizarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(LabelTitulo)
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnCadastrarCategoria)
+                    .addComponent(BtnCadastrarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnVisualizarCategoria))
-                .addGap(12, 12, 12)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnCadastrarTarefa)
+                    .addComponent(BtnCadastrarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnVisualizarTarefa))
-                .addGap(12, 12, 12)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnCadastrarEvento)
-                    .addComponent(BtnVisualizarEvento))
+                    .addComponent(BtnCadastrarSubtarefa)
+                    .addComponent(BtnVisualizarSubtarefa))
                 .addGap(18, 18, 18)
                 .addComponent(BtnFechar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -142,29 +141,29 @@ public class ViewMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 297, Short.MAX_VALUE)
+            .addGap(0, 314, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 282, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(50, 50, 50)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnCadastrarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarEventoActionPerformed
+    private void BtnCadastrarSubtarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarSubtarefaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCadastrarEventoActionPerformed
+    }//GEN-LAST:event_BtnCadastrarSubtarefaActionPerformed
 
     private void BtnCadastrarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarTarefaActionPerformed
         ViewCriarTarefa viewTarefa = new ViewCriarTarefa();
@@ -180,6 +179,15 @@ public class ViewMenu extends javax.swing.JFrame {
         ViewAlterarCategoria viewAlterarCategoria = new ViewAlterarCategoria();
         viewAlterarCategoria.setVisible(true);
     }//GEN-LAST:event_BtnVisualizarCategoriaActionPerformed
+
+    private void BtnVisualizarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVisualizarTarefaActionPerformed
+        ViewAlterarTarefa viewAlterarTarefa = new ViewAlterarTarefa();
+        viewAlterarTarefa.setVisible(true);  
+    }//GEN-LAST:event_BtnVisualizarTarefaActionPerformed
+
+    private void BtnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFecharActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnFecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,16 +227,13 @@ public class ViewMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCadastrarCategoria;
-    private javax.swing.JButton BtnCadastrarEvento;
+    private javax.swing.JButton BtnCadastrarSubtarefa;
     private javax.swing.JButton BtnCadastrarTarefa;
     private javax.swing.JButton BtnFechar;
     private javax.swing.JButton BtnVisualizarCategoria;
-    private javax.swing.JButton BtnVisualizarEvento;
+    private javax.swing.JButton BtnVisualizarSubtarefa;
     private javax.swing.JButton BtnVisualizarTarefa;
     private javax.swing.JLabel LabelTitulo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

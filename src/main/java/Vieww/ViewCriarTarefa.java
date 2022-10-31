@@ -38,8 +38,8 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         
         CategoriaInterface repositorioModulo = new CategoriaDAO();
         
-        for (Categoria modulo : repositorioModulo.buscarTodosModulos()) {
-            this.ComboModulo.addItem(modulo.getNomemodulo());
+        for (Categoria modulo : repositorioModulo.buscarTodosCategorias()) {
+            this.ComboModulo.addItem(modulo.getNomeCategoria());
         }
        
         
@@ -76,11 +76,9 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,"Título e Conclusão não podem ser vazios!");
             }*/
         });
-                
     }
       
-    
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

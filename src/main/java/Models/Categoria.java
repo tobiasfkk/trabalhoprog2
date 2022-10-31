@@ -10,30 +10,30 @@ package Models;
  */
 public class Categoria {
     
-    private int numeromodulo;
-    private String nomemodulo;
-    private String descricaomodulo; 
+    private int numerocategoria;
+    private String nomecategoria;
+    private String descricaocategoria; 
     private String datahoracriacao;
     private String status;
 
-    public Categoria(int numeromodulo, String nomemodulo, String descricaomodulo, String datahoracriacao, String status) {
-        this.numeromodulo = numeromodulo;
-        this.nomemodulo = nomemodulo;
-        this.descricaomodulo = descricaomodulo;
+    public Categoria(int numerocategoria, String nomecategoria, String descricaocategoria, String datahoracriacao, String status) {
+        this.numerocategoria = numerocategoria;
+        this.nomecategoria = nomecategoria;
+        this.descricaocategoria = descricaocategoria;
         this.datahoracriacao = datahoracriacao;
         this.status = status;
     }
 
-    public void setNumeromodulo(int numeromodulo) {
-        this.numeromodulo = numeromodulo;
+    public void setNumeroCategoria(int numerocategoria) {
+        this.numerocategoria = numerocategoria;
     }
 
-    public void setNomemodulo(String nomemodulo) {
-        this.nomemodulo = nomemodulo;
+    public void setNomeCategoria(String nomecategoria) {
+        this.nomecategoria = nomecategoria;
     }
 
-    public void setDescricaomodulo(String descricaomodulo) {
-        this.descricaomodulo = descricaomodulo;
+    public void setDescricaoCategoria(String descricaocategoria) {
+        this.descricaocategoria = descricaocategoria;
     }
 
     public void setDatahoracriacao(String datahoracriacao) {
@@ -44,16 +44,16 @@ public class Categoria {
         this.status = status;
     }
 
-    public int getNumeromodulo() {
-        return numeromodulo;
+    public int getNumeroCategoria() {
+        return numerocategoria;
     }
 
-    public String getNomemodulo() {
-        return nomemodulo;
+    public String getNomeCategoria() {
+        return nomecategoria;
     }
 
-    public String getDescricaomodulo() {
-        return descricaomodulo;
+    public String getDescricaoCategoria() {
+        return descricaocategoria;
     }
 
     public String getDatahoracriacao() {
@@ -66,6 +66,6 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return numeromodulo + " - " + nomemodulo + " - " + descricaomodulo;
+        return numerocategoria + " - " + nomecategoria + " - " + descricaocategoria;
     }
 }

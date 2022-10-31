@@ -189,7 +189,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         CategoriaInterface repositorioModulo = new CategoriaDAO();
         
         this.ComboModulo.removeAllItems();
-        for (Categoria modulo : repositorioModulo.buscarTodosModulos()) {
+        for (Categoria modulo : repositorioModulo.buscarTodosCategorias()) {
             this.ComboModulo.addItem(modulo);
         }
 
