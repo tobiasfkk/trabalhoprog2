@@ -45,7 +45,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         
         btnConfirmar.addActionListener((e) -> {
             
-           /*
+           
             TarefaInterface repositorio = new TarefaDAO();
            
             try{
@@ -60,8 +60,8 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                 String status = (String) comboStatus.getSelectedItem();
                 String descricao = txtDescricao.getText();
                 enviarImagem();
-            
-                Tarefa tarefa = new Tarefa(numerotarefa, datahoracriacao, titulo, dataconclusao, prioridade, status, descricao, anexo);
+                //String anexo = txtNomeArquivo.getText();
+                Tarefa tarefa = new Tarefa(numerotarefa, datahoracriacao, titulo, dataconclusao, prioridade, status, descricao);
                 tarefa.setTitulo(titulo);
                 tarefa.setDataconclusao(dataconclusao);
                 repositorio.gravar(tarefa);
@@ -74,7 +74,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                 dataConclusao.setText("");
             } catch (CampoVazioException | NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null,"Título e Conclusão não podem ser vazios!");
-            }*/
+            }
         });
     }
       

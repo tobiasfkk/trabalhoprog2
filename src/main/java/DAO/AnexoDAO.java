@@ -1,25 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import Models.Anexo;
 import interfaces.AnexoInterface;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
-/**
- *
- * @author João Pedro Parro
- */
 public class AnexoDAO implements AnexoInterface{
     
     private static List<Anexo>anexos;
     
     public AnexoDAO(){
         if(anexos == null){
-            anexos = new ArrayList<>();
+            anexos = (List<Anexo>) new HashSet<Anexo>();
         }
   
     }
