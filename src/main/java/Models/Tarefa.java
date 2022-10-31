@@ -1,5 +1,7 @@
 package Models;
 
+import Exception.CampoVazioException;
+
 public class Tarefa extends Atividade {
     
     private String anexo; 
@@ -26,4 +28,10 @@ public class Tarefa extends Atividade {
     public void setModulo(int modulo) {
         this.modulo = modulo;
     }
+
+    @Override
+    public String toString() {
+        return numeroatividade + " - " + titulo + " - "+ datahoracriacao + " - " + prioridade + " - "  + status + " - " + descricao;
+    }
+    
 }

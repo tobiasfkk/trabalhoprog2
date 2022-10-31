@@ -4,13 +4,13 @@ import Exception.CampoVazioException;
 
 public abstract class Atividade {   
     
-    private int numeroatividade;
-    private String datahoracriacao;
-    private String titulo;
+    protected int numeroatividade;
+    protected String datahoracriacao;
+    protected String titulo;
     private String dataconclusao;
-    private String prioridade;
-    private String status;
-    private String descricao;
+    protected String prioridade;
+    protected String status;
+    protected String descricao;
 
     public Atividade(int numeroatividade, String datahoracriacao, String titulo, String dataconclusao, String prioridade, String status, String descricao){
         this.numeroatividade = numeroatividade;
@@ -87,9 +87,7 @@ public abstract class Atividade {
         this.descricao = descricao;
     }
     
-    public String toString() {
-        return numeroatividade + " - " + titulo + " - "+ datahoracriacao + " - " + prioridade + " - "  + status + " - " + descricao;
-    }
+    public abstract String toString();
 }
     
     
