@@ -25,6 +25,8 @@ import javax.swing.JOptionPane;
 import interfaces.TarefaInterface;
 import java.text.DateFormat;
 import interfaces.CategoriaInterface;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ViewCriarTarefa extends javax.swing.JFrame {
     BufferedImage imagem;
@@ -42,6 +44,16 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
             this.ComboCategoria.addItem(categoria);
         }
        
+        Map<String, String> prioridadeCombo = new HashMap<String, String>();
+        
+        prioridadeCombo.put("Baixa","Baixa");
+        prioridadeCombo.put("Media","Média");
+        prioridadeCombo.put("Alta","Alta");
+        prioridadeCombo.put("Critico","Crítico");
+        
+        for(String key : prioridadeCombo.keySet()){
+            comboPrioridade.addItem(prioridadeCombo.get(key));
+        }
         
         btnConfirmar.addActionListener((e) -> {
             
@@ -142,7 +154,6 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
 
         jLabel3.setText("Prioridade");
 
-        comboPrioridade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Baixa", "Normal", "Alta", "Critica" }));
         comboPrioridade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboPrioridadeActionPerformed(evt);

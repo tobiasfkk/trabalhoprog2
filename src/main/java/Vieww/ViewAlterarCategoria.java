@@ -188,7 +188,7 @@ public class ViewAlterarCategoria extends javax.swing.JFrame {
         Categoria SelectedItem = (Categoria) this.ComboCategoria.getSelectedItem();
         this.CategoriaNome.setText(SelectedItem.getNomeCategoria());
         this.CategoriaDescricao.setText(SelectedItem.getDescricaoCategoria());
-        
+        this.CategoriaSituacao.setSelectedItem(SelectedItem.getStatus());
     }//GEN-LAST:event_ComboCategoriaActionPerformed
 
     private void CategoriaSituacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoriaSituacaoActionPerformed
