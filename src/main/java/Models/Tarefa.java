@@ -5,13 +5,12 @@ import Exception.CampoVazioException;
 public class Tarefa extends Atividade {
     
     private String anexo; 
-    private int modulo;
+    private Categoria categoria;
    
-    public Tarefa(int numerotarefa, String datahoracriacao, String titulo, String dataconclusao, String prioridade, String status, String descricao) {
+    public Tarefa(int numerotarefa, String datahoracriacao, String titulo, String dataconclusao, String prioridade, String status, String descricao, Categoria categoria) {
         super(numerotarefa,datahoracriacao,titulo,dataconclusao,prioridade,status,descricao);
-       // this.anexo = anexo;
-       // this.Modulo = Modulo;
-        }
+        this.categoria = categoria;
+    }
              
     public String getAnexo() {
         return anexo;
@@ -21,12 +20,12 @@ public class Tarefa extends Atividade {
         this.anexo = anexo;
     }    
 
-    public int getModulo() {
-        return modulo;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setModulo(int modulo) {
-        this.modulo = modulo;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     @Override

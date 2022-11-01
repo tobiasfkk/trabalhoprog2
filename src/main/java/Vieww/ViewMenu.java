@@ -4,6 +4,15 @@
  */
 package Vieww;
 
+import DAO.CategoriaDAO;
+import DAO.TarefaDAO;
+import Models.Categoria;
+import Models.Tarefa;
+import interfaces.CategoriaInterface;
+import interfaces.TarefaInterface;
+import static java.lang.System.exit;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 10264021908
@@ -97,30 +106,31 @@ public class ViewMenu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BtnFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(BtnCadastrarSubtarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnVisualizarSubtarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(BtnCadastrarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(BtnVisualizarCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(BtnCadastrarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(BtnVisualizarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(BtnFechar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(BtnCadastrarSubtarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BtnCadastrarTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BtnCadastrarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(BtnVisualizarSubtarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BtnVisualizarCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BtnVisualizarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 16, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(LabelTitulo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnCadastrarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnVisualizarCategoria))
@@ -133,15 +143,14 @@ public class ViewMenu extends javax.swing.JFrame {
                     .addComponent(BtnCadastrarSubtarefa)
                     .addComponent(BtnVisualizarSubtarefa))
                 .addGap(18, 18, 18)
-                .addComponent(BtnFechar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(BtnFechar))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 314, Short.MAX_VALUE)
+            .addGap(0, 395, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,7 +159,7 @@ public class ViewMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 282, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -166,23 +175,66 @@ public class ViewMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCadastrarSubtarefaActionPerformed
 
     private void BtnCadastrarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarTarefaActionPerformed
-        ViewCriarTarefa viewTarefa = new ViewCriarTarefa();
-        viewTarefa.setVisible(true);
+        
+        CategoriaInterface repositorioCategoria = new CategoriaDAO();
+        
+        boolean entrou = false;
+        for (Categoria categoria : repositorioCategoria.buscarTodosCategorias()) {
+            
+            entrou = true;
+            break;
+        }
+        if(entrou == false){
+            JOptionPane.showMessageDialog(null,"Necessário cadastrar pelo menos uma categoria!");
+        }else{
+            ViewCriarTarefa viewTarefa = new ViewCriarTarefa();
+            viewTarefa.setVisible(true);
+        }  
+        
     }//GEN-LAST:event_BtnCadastrarTarefaActionPerformed
 
     private void BtnCadastrarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarCategoriaActionPerformed
         ViewCriarCategoria viewCategoria = new ViewCriarCategoria();
         viewCategoria.setVisible(true);
+        
     }//GEN-LAST:event_BtnCadastrarCategoriaActionPerformed
 
     private void BtnVisualizarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVisualizarCategoriaActionPerformed
-        ViewAlterarCategoria viewAlterarCategoria = new ViewAlterarCategoria();
-        viewAlterarCategoria.setVisible(true);
+
+        CategoriaInterface repositorioCategoria = new CategoriaDAO();
+        
+        boolean entrou = false;
+        for (Categoria categoria : repositorioCategoria.buscarTodosCategorias()) {
+            
+            entrou = true;
+            break;
+        }
+        if(entrou == false){
+            JOptionPane.showMessageDialog(null,"Necessário cadastrar pelo menos uma categoria!");
+        }else{
+            ViewAlterarCategoria viewAlterarCategoria = new ViewAlterarCategoria();
+            viewAlterarCategoria.setVisible(true);
+        }
     }//GEN-LAST:event_BtnVisualizarCategoriaActionPerformed
 
     private void BtnVisualizarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVisualizarTarefaActionPerformed
-        ViewAlterarTarefa viewAlterarTarefa = new ViewAlterarTarefa();
-        viewAlterarTarefa.setVisible(true);  
+  
+        
+        
+        TarefaInterface repositorioTarefa = new TarefaDAO();
+        
+        boolean entrou = false;
+        for (Tarefa tarefa : repositorioTarefa.buscarTodasTarefas()) {
+            
+            entrou = true;
+            break;
+        }
+        if(entrou == false){
+            JOptionPane.showMessageDialog(null,"Necessário cadastrar pelo menos uma tarefa!");
+        }else{
+            ViewAlterarTarefa viewAlterarTarefa = new ViewAlterarTarefa();
+            viewAlterarTarefa.setVisible(true); 
+        } 
     }//GEN-LAST:event_BtnVisualizarTarefaActionPerformed
 
     private void BtnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFecharActionPerformed

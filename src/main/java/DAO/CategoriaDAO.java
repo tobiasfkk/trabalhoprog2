@@ -4,14 +4,16 @@ import Models.Categoria;
 import java.util.ArrayList;
 import java.util.List;
 import interfaces.CategoriaInterface;
+import java.util.HashSet;
+import java.util.Set;
 
 public class CategoriaDAO implements CategoriaInterface{
     
-    private static List<Categoria>categorias;
+    private static Set<Categoria>categorias;
 
     public CategoriaDAO(){
         if(categorias == null)
-           categorias = new ArrayList<>();
+           categorias = new HashSet<>();
     }
 
     @Override
@@ -29,13 +31,24 @@ public class CategoriaDAO implements CategoriaInterface{
     }
 
     @Override
-    public List<Categoria> buscarTodosCategorias() {
+    public Set<Categoria> buscarTodosCategorias() {
         return categorias;
     }
 
     @Override
     public void remover(Categoria categoria) {
         categorias.remove(categoria);
+    }
+
+    @Override
+    public void editar(int numerocategoria, String nomecategoria, String descricaocategoria, String status) {
+        for(Categoria categoria1 : categorias){
+             if (categoria1.getNumeroCategoria()== numerocategoria){
+                 categoria1.setNomeCategoria(nomecategoria);
+                 categoria1.setDescricaoCategoria(descricaocategoria);
+                 categoria1.setStatus(status);
+             }
+         }
     }
 }
 

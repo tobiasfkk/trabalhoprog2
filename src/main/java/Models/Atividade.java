@@ -80,10 +80,8 @@ public abstract class Atividade {
         return this.descricao;
     }
     
-    public void setDescricao(String descricao) throws CampoVazioException {
-        if(descricao.isBlank()) {
-            throw new CampoVazioException();
-        }  
+    public void setDescricao(String descricao) {
+        
         this.descricao = descricao;
     }
     

@@ -179,8 +179,8 @@ public class ViewAlterarCategoria extends javax.swing.JFrame {
 
     private void BtnSalvarAlteracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalvarAlteracaoActionPerformed
         Categoria SelectedItem = (Categoria) this.ComboCategoria.getSelectedItem();
-        SelectedItem.setNomeCategoria(this.CategoriaNome.getText());
-        SelectedItem.setDescricaoCategoria(this.CategoriaDescricao.getText());
+        CategoriaInterface repositorioCategoria = new CategoriaDAO();
+        repositorioCategoria.editar(SelectedItem.getNumeroCategoria(), this.CategoriaNome.getText(), this.CategoriaDescricao.getText(), this.CategoriaSituacao.getSelectedItem().toString());
     }//GEN-LAST:event_BtnSalvarAlteracaoActionPerformed
 
     private void ComboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboCategoriaActionPerformed
@@ -188,6 +188,7 @@ public class ViewAlterarCategoria extends javax.swing.JFrame {
         Categoria SelectedItem = (Categoria) this.ComboCategoria.getSelectedItem();
         this.CategoriaNome.setText(SelectedItem.getNomeCategoria());
         this.CategoriaDescricao.setText(SelectedItem.getDescricaoCategoria());
+        
     }//GEN-LAST:event_ComboCategoriaActionPerformed
 
     private void CategoriaSituacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoriaSituacaoActionPerformed
@@ -197,9 +198,9 @@ public class ViewAlterarCategoria extends javax.swing.JFrame {
     private void BtnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeletarActionPerformed
         Categoria SelectedItem = (Categoria) this.ComboCategoria.getSelectedItem();
         CategoriaInterface repositorioCategoria = new CategoriaDAO();
-        JOptionPane.showMessageDialog(null,"Categoria deletada com Sucesso!");
         repositorioCategoria.remover(SelectedItem);
-        this.ComboCategoria.removeItem(SelectedItem);         
+        this.ComboCategoria.removeItem(SelectedItem);
+        JOptionPane.showMessageDialog(null,"Categoria deletada com Sucesso!");        
     }//GEN-LAST:event_BtnDeletarActionPerformed
 
     /**

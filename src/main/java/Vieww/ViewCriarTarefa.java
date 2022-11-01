@@ -36,10 +36,10 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
     public ViewCriarTarefa() {
         initComponents();
         
-        CategoriaInterface repositorioModulo = new CategoriaDAO();
+        CategoriaInterface repositorioCategoria = new CategoriaDAO();
         
-        for (Categoria modulo : repositorioModulo.buscarTodosCategorias()) {
-            this.ComboModulo.addItem(modulo.getNomeCategoria());
+        for (Categoria categoria : repositorioCategoria.buscarTodosCategorias()) {
+            this.ComboCategoria.addItem(categoria);
         }
        
         
@@ -47,6 +47,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
             
            
             TarefaInterface repositorio = new TarefaDAO();
+            
            
             try{
                 numerotarefa++;         
@@ -59,11 +60,16 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                 String prioridade = (String) comboPrioridade.getSelectedItem();
                 String status = (String) comboStatus.getSelectedItem();
                 String descricao = txtDescricao.getText();
+                Categoria categoria = (Categoria) ComboCategoria.getSelectedItem();
                 enviarImagem();
-                //String anexo = txtNomeArquivo.getText();
-                Tarefa tarefa = new Tarefa(numerotarefa, datahoracriacao, titulo, dataconclusao, prioridade, status, descricao);
+                String anexo = txtNomeArquivo.getText();
+                Tarefa tarefa = new Tarefa(numerotarefa, datahoracriacao, titulo, dataconclusao, prioridade, status, descricao, categoria);
                 tarefa.setTitulo(titulo);
                 tarefa.setDataconclusao(dataconclusao);
+                if(!anexo.isEmpty()){
+                    tarefa.setAnexo(anexo);
+                }
+                
                 repositorio.gravar(tarefa);
             
                 JOptionPane.showMessageDialog(null,"Tarefa: "+tarefa.getTitulo() + ", criada com Sucesso!");
@@ -101,8 +107,10 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         btnConfirmar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        ComboModulo = new javax.swing.JComboBox<>();
+        ComboCategoria = new javax.swing.JComboBox<>();
         dataConclusao = new javax.swing.JFormattedTextField();
+        btnImagem = new javax.swing.JButton();
+        txtNomeArquivo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -161,9 +169,9 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
 
         jLabel7.setText("Categoria");
 
-        ComboModulo.addActionListener(new java.awt.event.ActionListener() {
+        ComboCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboModuloActionPerformed(evt);
+                ComboCategoriaActionPerformed(evt);
             }
         });
 
@@ -178,6 +186,15 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
             }
         });
 
+        btnImagem.setText("Imagem");
+        btnImagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImagemActionPerformed(evt);
+            }
+        });
+
+        txtNomeArquivo.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,7 +204,11 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(16, 16, 16)
+                        .addComponent(btnImagem)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNomeArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnConfirmar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,13 +216,10 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(ComboModulo, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ComboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
@@ -247,13 +265,16 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComboModulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnImagem)
+                    .addComponent(txtNomeArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -275,7 +296,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         String tipo = ".jpeg";
         String nome = "imagem" + Integer.toString(numeracao)+ tipo;
         
-        /*
+        
         try {
              // TODO add your handling code here:
              
@@ -291,7 +312,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
          } catch (IOException ex) {
              //Logger.getLogger(nome);
              
-         }*/
+         }
         }
     }
     private void txtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloActionPerformed
@@ -315,9 +336,30 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dataConclusaoActionPerformed
 
-    private void ComboModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboModuloActionPerformed
+    private void ComboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboCategoriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboModuloActionPerformed
+    }//GEN-LAST:event_ComboCategoriaActionPerformed
+
+    private void btnImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImagemActionPerformed
+        JFileChooser fc = new JFileChooser();
+        int res = fc.showOpenDialog(null);
+
+        if (res == JFileChooser.APPROVE_OPTION) {
+            File arquivo = fc.getSelectedFile();
+
+            try {
+                imagem = ManipularImagem.setImagemDimensao(arquivo.getAbsolutePath(), 600, 600);
+
+            } catch (Exception ex) {
+               // System.out.println(ex.printStackTrace().toString());
+            }
+            entrou = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Voce nao selecionou nenhum arquivo.");
+
+            entrou = false;
+        }
+    }//GEN-LAST:event_btnImagemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,8 +404,9 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboModulo;
+    private javax.swing.JComboBox<Categoria> ComboCategoria;
     private javax.swing.JButton btnConfirmar;
+    private javax.swing.JButton btnImagem;
     private javax.swing.JComboBox<String> comboPrioridade;
     private javax.swing.JComboBox<String> comboStatus;
     private javax.swing.JFormattedTextField dataConclusao;
@@ -376,6 +419,7 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtDescricao;
+    private javax.swing.JLabel txtNomeArquivo;
     private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 
