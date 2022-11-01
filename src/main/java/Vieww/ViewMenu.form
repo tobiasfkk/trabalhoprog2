@@ -62,13 +62,11 @@
                               <Component id="BtnFechar" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="BtnCadastrarSubtarefa" max="32767" attributes="0"/>
                                       <Component id="BtnCadastrarTarefa" max="32767" attributes="0"/>
                                       <Component id="BtnCadastrarCategoria" min="-2" pref="167" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="BtnVisualizarSubtarefa" alignment="0" max="32767" attributes="0"/>
                                       <Component id="BtnVisualizarCategoria" max="32767" attributes="0"/>
                                       <Component id="BtnVisualizarTarefa" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
                                   </Group>
@@ -96,12 +94,7 @@
                       <Component id="BtnCadastrarTarefa" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BtnVisualizarTarefa" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="BtnCadastrarSubtarefa" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="BtnVisualizarSubtarefa" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                   <Component id="BtnFechar" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -112,19 +105,6 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="MENU"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="BtnCadastrarSubtarefa">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastrar Subtarefa"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnCadastrarSubtarefaActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="BtnVisualizarSubtarefa">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Visualizar Subtarefa"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="BtnVisualizarTarefa">

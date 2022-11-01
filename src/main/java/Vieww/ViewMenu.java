@@ -37,8 +37,6 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         LabelTitulo = new javax.swing.JLabel();
-        BtnCadastrarSubtarefa = new javax.swing.JButton();
-        BtnVisualizarSubtarefa = new javax.swing.JButton();
         BtnVisualizarTarefa = new javax.swing.JButton();
         BtnCadastrarTarefa = new javax.swing.JButton();
         BtnVisualizarCategoria = new javax.swing.JButton();
@@ -49,15 +47,6 @@ public class ViewMenu extends javax.swing.JFrame {
 
         LabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelTitulo.setText("MENU");
-
-        BtnCadastrarSubtarefa.setText("Cadastrar Subtarefa");
-        BtnCadastrarSubtarefa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCadastrarSubtarefaActionPerformed(evt);
-            }
-        });
-
-        BtnVisualizarSubtarefa.setText("Visualizar Subtarefa");
 
         BtnVisualizarTarefa.setText("Visualizar Tarefa");
         BtnVisualizarTarefa.addActionListener(new java.awt.event.ActionListener() {
@@ -114,12 +103,10 @@ public class ViewMenu extends javax.swing.JFrame {
                             .addComponent(BtnFechar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(BtnCadastrarSubtarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(BtnCadastrarTarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(BtnCadastrarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(BtnVisualizarSubtarefa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(BtnVisualizarCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(BtnVisualizarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 16, Short.MAX_VALUE)))
@@ -138,11 +125,7 @@ public class ViewMenu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnCadastrarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnVisualizarTarefa))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnCadastrarSubtarefa)
-                    .addComponent(BtnVisualizarSubtarefa))
-                .addGap(18, 18, 18)
+                .addGap(81, 81, 81)
                 .addComponent(BtnFechar))
         );
 
@@ -169,10 +152,6 @@ public class ViewMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BtnCadastrarSubtarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarSubtarefaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCadastrarSubtarefaActionPerformed
 
     private void BtnCadastrarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarTarefaActionPerformed
         
@@ -279,11 +258,9 @@ public class ViewMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCadastrarCategoria;
-    private javax.swing.JButton BtnCadastrarSubtarefa;
     private javax.swing.JButton BtnCadastrarTarefa;
     private javax.swing.JButton BtnFechar;
     private javax.swing.JButton BtnVisualizarCategoria;
-    private javax.swing.JButton BtnVisualizarSubtarefa;
     private javax.swing.JButton BtnVisualizarTarefa;
     private javax.swing.JLabel LabelTitulo;
     private javax.swing.JPanel jPanel1;
