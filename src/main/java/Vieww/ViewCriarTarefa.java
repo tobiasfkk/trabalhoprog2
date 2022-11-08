@@ -6,6 +6,7 @@ import Exception.CampoVazioException;
 import Models.Anexo;
 import Models.ManipularImagem;
 import Models.Categoria;
+import Models.Status;
 import Models.Tarefa;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,7 +26,11 @@ import javax.swing.JOptionPane;
 import interfaces.TarefaInterface;
 import java.text.DateFormat;
 import interfaces.CategoriaInterface;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ViewCriarTarefa extends javax.swing.JFrame {
@@ -39,13 +44,29 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         initComponents();
         
         CategoriaInterface repositorioCategoria = new CategoriaDAO();
-        
+
         for (Categoria categoria : repositorioCategoria.buscarTodosCategorias()) {
-            this.ComboCategoria.addItem(categoria);
+            this.ComboCategoria.addItem((Categoria) categoria);
         }
-       
+   
+        //aqui implementei em ordem errada pra ordenar com .sort - tobias
+        Status naoConcluido = new Status(2,"Não Concluido");
+        Status concluido = new Status(1,"Concluido");
+        
+        List<Status> listaStatus = new ArrayList();
+        
+        listaStatus.add(concluido);
+        listaStatus.add(naoConcluido);
+        
+        Collections.sort(listaStatus);   
+
+        for(Status status : listaStatus){
+            comboStatus.addItem(status.getNome());
+        }
+        
         Map<String, String> prioridadeCombo = new HashMap<String, String>();
         
+       
         prioridadeCombo.put("Baixa","Baixa");
         prioridadeCombo.put("Media","Média");
         prioridadeCombo.put("Alta","Alta");
@@ -143,7 +164,6 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Conclusão");
 
-        comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Concluído", "Concluído" }));
         comboStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboStatusActionPerformed(evt);
@@ -282,10 +302,11 @@ public class ViewCriarTarefa extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnImagem)
-                    .addComponent(txtNomeArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNomeArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnImagem)))
                 .addContainerGap())
         );
 
